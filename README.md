@@ -1,15 +1,11 @@
 # mooja-django-stack
 
-A Django project layout and ansbile playbooks designed to deploy and configure
-the project with minimum effort. In addition to installing the specified repository,
-it will install the following:
+Simple application designed to keep track of "x effect" cards. Uses the following stack:
 
 * Nginx
+* Python 3.4
 * Gunicorn
 * PostgreSQL
 * Virtualenv
+* Django 1.8
 
-
-Default settings are stored in roles/role_name/vars/main.yml.
-
-Environment-specific settings are in the env_vars directory.

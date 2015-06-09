@@ -14,8 +14,8 @@
 
   vars:
 
-    project_name: example-project
-    application_name: djangoproj
+    project_name: xeffect.net
+    application_name: xeffect
     git_repo: https://github.com/mooja/mooja-django-stack.git
     git_branch: master
 
