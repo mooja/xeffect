@@ -1,5 +1,4 @@
 # In production set the environment variable like this:
-#    DJANGO_SETTINGS_MODULE=djangoproj.settings.production
 from .base import *             # NOQA
 import logging.config
 
@@ -8,7 +7,7 @@ DEBUG = False
 TEMPLATE_DEBUG = False
 
 # Must mention ALLOWED_HOSTS in production!
-# ALLOWED_HOSTS = ["djangoproj.com"]
+# ALLOWED_HOSTS = ["xeffect.com"]
 
 # Cache the templates in memory for speed-up
 loaders = [
