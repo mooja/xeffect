@@ -1,0 +1,26 @@
+# vim: sw=2:noai
+---
+- name: Install Base Packages
+  hosts: vagrant
+  sudo: yes
+  sudo_user: root
+  remote_user: vagrant
+
+  vars_files:
+
+    - env_vars/ssl.yml
+    - env_vars/base.yml
+    - env_vars/vagrant.yml
+
+  vars:
+
+    project_name: example-project
+    application_name: djangoproj
+    git_repo: https://github.com/mooja/mooja-django-stack.git
+    git_branch: master
+
+  roles:
+
+    - base
+    - db
+    - app

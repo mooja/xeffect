@@ -1,0 +1,49 @@
+# vim: sw=2:noai
+---
+
+- name: Install packages required by the Django app inside virtualenv
+  pip: virtualenv={{ virtualenv_path }} executable=pip3 requirements={{ requirements_file }}
+
+- name: Create migrations for authtools
+  django_manage:
+    command: makemigrations authtools
+    app_path: "{{ project_path }}/src"
+    virtualenv: "{{ virtualenv_path }}"
+    settings: "{{ django_settings_file }}"
+  environment: django_environment
+
+- name: Run the Django syncdb command
+  django_manage:
+    command: syncdb
+    app_path: "{{ project_path }}/src"
+    virtualenv: "{{ virtualenv_path }}"
+    settings: "{{ django_settings_file }}"
+  environment: django_environment
+
+- name: Run Django database migrations
+  django_manage:
+    command: migrate
+    app_path: "{{ project_path }}/src"
+    virtualenv: "{{ virtualenv_path }}"
+    settings: "{{ django_settings_file }}"
+  environment: django_environment
+
+- name: Create Static Directory
+  file: path={{ nginx_static_dir }}
+        owner={{ gunicorn_user }}
+        group={{ gunicorn_group }}
+        state=directory
+
+- name: Create Media Directory
+  file: path={{ nginx_media_dir }}
+        owner={{ gunicorn_user }}
+        group={{ gunicorn_group }}
+        state=directory
+
+- name: Run Django collectstatic
+  django_manage:
+    command: collectstatic
+    app_path: "{{ project_path }}/src"
+    virtualenv: "{{ virtualenv_path }}"
+    settings: "{{ django_settings_file }}"
+  environment: django_environment
