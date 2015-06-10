@@ -16,7 +16,7 @@
 
     project_name: xeffect.net
     application_name: xeffect
-    git_repo: https://github.com/mooja/mooja-django-stack.git
+    git_repo: https://github.com/mooja/xeffect.git
     git_branch: master
 
   roles:
