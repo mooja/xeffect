@@ -36,14 +36,10 @@ TEMPLATES = [
 import environ
 env = environ.Env()
 
-# Ideally move env file should be outside the git repo
-# i.e. BASE_DIR.parent.parent
 env_file = join(dirname(__file__), 'local.env')
 if exists(env_file):
     environ.Env.read_env(str(env_file))
 
-# SECURITY WARNING: keep the secret key used in production secret!
-# Raises ImproperlyConfigured exception if SECRET_KEY not in os.environ
 SECRET_KEY = env('SECRET_KEY')
 
 ALLOWED_HOSTS = []
@@ -66,6 +62,7 @@ INSTALLED_APPS = (
     'profiles',
     'accounts',
 
+    'habits',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -79,7 +76,6 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'xeffect.urls'
-
 WSGI_APPLICATION = 'xeffect.wsgi.application'
 
 DATABASES = {
