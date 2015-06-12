@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block navbar-left %}
+  {% include "_navbar.html" with active_link="home" %}
+{% endblock %}
+
+{% block container %}
+<!-- Benefits of the Django application -->
+<div class="container">
+    <div class="row">
+    	<div class="col-lg-12">
+            <!-- <h5 class="text-center">ID: {{ habit.id }}</h5> -->
+            <script>
+                var status = "{{ habit.status }}";
+            </script>
+        </div>
+    </div>
+    <div class="row">
+    	<div id="habit_grid" class="col-lg-12">
+            <table class="table">
+                <caption class="text-center"> {{ habit.title }} </caption>
+                <script>
+                    for (var i = 0; i < 7; i++) {
+                        document.write('<tr>');
+                        for (var j = 0;j < 7; j++) {
+                            var day_idx = i*7 + j;
+                            document.write('<td>');
+                            document.write(day_idx+1);
+                            if (status[day_idx] == '1')
+                                document.write('<br> X');
+                            document.write('</td>');
+                        }
+                        document.write('</tr>');
+                    }
+                    display_status();
+                </script>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock container %}

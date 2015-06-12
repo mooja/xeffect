@@ -17,4 +17,5 @@ def create_habit(request):
 
 
 def view_habit(request, id):
-    return HttpResponse("<h3> habit id: {} </h3>".format(str(id)))
+    habit = Habit.objects.get(id=id)
+    return render(request, 'habits/habit_detail.html', {'habit': habit})
