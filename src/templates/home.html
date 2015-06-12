@@ -23,18 +23,17 @@
 
 {% block container %}
 <!-- Benefits of the Django application -->
-<a name="about"></a>
-
 <div class="container">
     <div class="row">
     	<div class="col-lg-12">
-            <h2 class="text-center"> Lets Get Started with HabitTraining by creating a card </h2>
+            <h2 class="text-center">Lets Get Started with HabitTraining by Creating a Card</h2>
         </div>
     </div>
   <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 form-group">
-          <form action="{% url 'habits:create_habit' %}">
-              <input type="text" placeholder="habbit name" class="form-control text-center">
+      <div class="col-lg-8 col-lg-offset-2 form-group" style="magin-bottom: 10em">
+          <form method="POST" action="{% url 'habits:create_habit' %}">
+              {% csrf_token %}
+              <input type="text" name="title" placeholder="habbit name" class="form-control text-center">
           </form>
       </div>
   </div>
