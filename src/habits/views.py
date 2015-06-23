@@ -1,7 +1,10 @@
-from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.shortcuts import render, redirect
+
+from rest_framework import viewsets
 
 from .models import Habit
+from .serializers import HabitSerializer
 
 
 def create_habit(request):
@@ -19,3 +22,8 @@ def create_habit(request):
 def view_habit(request, id):
     habit = Habit.objects.get(id=id)
     return render(request, 'habits/habit_detail.html', {'habit': habit})
+
+
+class HabitViewSet(viewsets.ModelViewSet):
+    queryset = Habit.objects.all()
+    serializer_class = HabitSerializer

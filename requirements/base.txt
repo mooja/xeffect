@@ -6,3 +6,4 @@ django-admin-bootstrapped>=2.4.0
 django-authtools>=1.2.0
 easy-thumbnails>=2.2
 psycopg2
+djangorestframework==3.1.3
