@@ -22,3 +22,7 @@ class Habit(models.Model):
         habit = cls(id=id, title=title, status=status)
         habit.save()
         return habit
+
+    def get_absolute_url(self):
+        from django.core.urlresolvers import reverse
+        return reverse('habits:view_habit', args=[str(self.id)])
