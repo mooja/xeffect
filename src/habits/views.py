@@ -1,5 +1,8 @@
+import json
+
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.core.urlresolvers import reverse
 
 from rest_framework import viewsets
 
@@ -16,12 +19,13 @@ def create_habit(request):
         else:
             return HttpResponse("<h2> Bad Request </h2>")
 
-    return render(request, 'habits/create_habit.html')
+    return redirect('home')
 
 
 def view_habit(request, id):
     habit = Habit.objects.get(id=id)
-    return render(request, 'habits/habit_detail.html', {'habit': habit})
+    habit_json_url = json.dumps(reverse('habit-detail', args=[habit.id]))
+    return render(request, 'habits/habit_detail.html', {'habit_json_url': habit_json_url})
 
 
 class HabitViewSet(viewsets.ModelViewSet):
