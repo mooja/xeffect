@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from django.core.urlresolvers import reverse
 
 from rest_framework import viewsets
+from rest_framework import permissions
 
 from .models import Habit
 from .serializers import HabitSerializer
@@ -29,5 +30,6 @@ def view_habit(request, id):
 
 
 class HabitViewSet(viewsets.ModelViewSet):
+    permission_classes = (permissions.AllowAny,)
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer

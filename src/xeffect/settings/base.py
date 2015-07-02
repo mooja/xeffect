@@ -115,8 +115,8 @@ LOGIN_URL = reverse_lazy("accounts:login")
 THUMBNAIL_EXTENSION = 'png'     # Or any extn for your thumbnails
 
 
-# REST_FRAMEWORK = {
-#     'DEFAULT_PERMISSION_CLASSES': [
-#         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-#     ]
-# }
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny'
+    ]
+}
