@@ -8,6 +8,8 @@
 {% endblock %}
 
 {% block extrahead %}
+<link rel="stylesheet" href="{% static 'site/css/habit_detail.css' %}" type="text/css">
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -15,24 +17,6 @@
 
 {% block container %}
 <!-- Benefits of the Django application -->
-<style>
-
-.day {
-  display: inline-block;
-  width: 14.25%;
-  height: 5em;
-  border: 1px solid gray;
-}
-
-.dayOff {
-}
-
-.dayOn {
-  background: #0F0;
-}
-
-</style>
-
 
 <div class="container">
     <div class="row">
@@ -102,7 +86,7 @@
 
         render: function() {
             return (
-                <div className="habbitBox">
+                <div className="habitBox">
                   <h1> {this.state.data.title} </h1>
                   <br />
                   <br />
