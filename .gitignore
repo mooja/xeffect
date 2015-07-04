@@ -66,3 +66,5 @@ staticfiles/
 
 # files generated in the media directory
 media/
+
+.sass-cache

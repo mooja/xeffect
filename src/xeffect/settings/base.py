@@ -32,6 +32,7 @@ TEMPLATES = [
     },
 ]
 
+
 # Use 12factor inspired environment variables or from a file
 import environ
 env = environ.Env()
@@ -62,6 +63,7 @@ INSTALLED_APPS = (
     'profiles',
     'accounts',
     'rest_framework',
+    'pipeline',
 
     'habits',
 )
@@ -74,6 +76,13 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'pipeline.middleware.MinifyHTMLMiddleware',
+)
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'pipeline.finders.PipelineFinder',
 )
 
 ROOT_URLCONF = 'xeffect.urls'
@@ -114,9 +123,41 @@ LOGIN_URL = reverse_lazy("accounts:login")
 
 THUMBNAIL_EXTENSION = 'png'     # Or any extn for your thumbnails
 
-
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny'
     ]
+}
+
+# use django_pipeline for static file storage
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+
+# sass compiler
+PIPELINE_COMPILERS = (
+  'pipeline.compilers.sass.SASSCompiler',
+)
+
+PIPELINE_CSS = {
+  'master': {
+    'source_filenames': (
+      'bootstrap/css/bootstrap.min.css',
+      'bootstrap/css/bootstrap-theme.min.css',
+      'site/sass/main.sass',
+    ),
+
+    'output_filename': 'site/css/master.css',
+      'variant': 'datauri',
+    }
+}
+
+# pipeline configuration
+PIPELINE_JS = {
+    'master': {
+        'source_filenames': (
+          'bootstrap/js/bootstrap.min.js',
+          'site/js/src/*.js',
+        ),
+        # 'output_filename': 'site/js/dist/master.js',
+        'output_filename': 'master.js',
+    }
 }

@@ -1,7 +1,16 @@
 ---
 
-- name: Install additional packages required by django application
+- name: Install additional python packages required by django application
   apt: name={{ item }} update_cache={{ update_apt_cache }} force=yes state=installed
   with_items:
     - libjpeg-dev 
     - zlib1g-dev
+
+
+- include: setup_nodejs.yml
+
+- name: Install node.js packages.
+  npm: name={{ item }} global=yes state=present
+  with_items:
+    - sass
+    - yuglify
