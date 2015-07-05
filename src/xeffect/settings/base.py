@@ -135,6 +135,7 @@ STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 # sass compiler
 PIPELINE_COMPILERS = (
   'pipeline.compilers.sass.SASSCompiler',
+  'react.utils.pipeline.JSXCompiler',
 )
 
 PIPELINE_CSS = {
@@ -154,10 +155,16 @@ PIPELINE_CSS = {
 PIPELINE_JS = {
     'master': {
         'source_filenames': (
-          'bootstrap/js/bootstrap.min.js',
-          'site/js/src/*.js',
+          'site/js/src/base/*.js',
         ),
-        # 'output_filename': 'site/js/dist/master.js',
-        'output_filename': 'master.js',
+        'output_filename': 'site/js/dist/base.js',
+    },
+    'habit_detail': {
+        'source_filenames': (
+            'site/js/src/habit_detail/react.js',
+            'site/js/src/habit_detail/components.js',
+            'site/js/src/habit_detail/habit_detail.js',
+        ),
+        'output_filename': 'site/js/dist/habit_detail/habit_detail.js'
     }
 }
