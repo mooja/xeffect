@@ -68,3 +68,4 @@ staticfiles/
 media/
 
 .sass-cache
+.module-cache
