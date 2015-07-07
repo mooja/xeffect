@@ -25,7 +25,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="text-center home-banner">Lets get started with training a new habbit <br> by creating a card.</h2>
+            <h2 class="text-center home-banner">Get started with training a new habbit <br> by creating a habbit card.</h2>
         </div>
     </div>
     <div class="row home-form">
@@ -33,17 +33,18 @@
             <form method="POST" action="{% url 'habits:create_habit' %}">
                 {% csrf_token %}
                 <p>
-                <input type="text" name="title" placeholder="15 Minutes of Daily Meditation" class="form-control text-center">
+                <input id="card-name" type="text" name="title" placeholder="15 Minutes of Daily Meditation" class="form-control text-center">
                 </p>
+                <div class="habit-sheet">
+                    <h2 id="card_name_display" class="text-center"> 15 Minutes of Daily Meditation </h2>
+                    <div id="card_days_display"></div>
+                </div>
                 <p class="text-center">
-                <button class="btn"> Track Online </button>
-                <button class="btn btn-success"> Print Card  </button>
+                    <button class="btn"> Track Online </button>
+                    &nbsp;
+                    <button class="btn"> Print Card  </button>
                 </p>
             </form>
-        </div>
-    </div>
-    <div class="row">
-    	<div class="col-lg-8 col-lg-offset-2 habit-sheet">
         </div>
     </div>
 </div>
