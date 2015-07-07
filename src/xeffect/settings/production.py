@@ -20,6 +20,8 @@ loaders = [
 TEMPLATES[0]['OPTIONS'].update({"loaders": loaders})
 TEMPLATES[0].update({"APP_DIRS": False})
 
+LOGFILE_ROOT = join(dirname(BASE_DIR), 'logs')
+
 # Reset logging
 LOGGING_CONFIG = None
 LOGGING = {
