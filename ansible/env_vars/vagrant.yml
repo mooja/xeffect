@@ -31,7 +31,7 @@ nginx_http_port: 80
 nginx_https_port: 443
 nginx_access_log_file: "{{ application_log_dir }}/nginx_access.log"
 nginx_error_log_file: "{{ application_log_dir }}/nginx_error.log"
-nginx_static_dir: "{{ project_path }}/static/"
+nginx_static_dir: "{{ project_path }}/staticfiles/"
 nginx_media_dir: "{{ project_path }}/media/"
 #  nginx_server_name: "{{ inventory_hostname }}"
 ssl_src_dir: ssl_self_signed
@@ -39,7 +39,7 @@ ssl_dest_dir: /etc/ssl
 ssl_key_password: password
 
 # Django settings.
-django_settings_file: "{{ application_name }}.settings.development"
+django_settings_file: "{{ application_name }}.settings.production"
 django_secret_key: "akr2icmg1n8%z^3fe3c+)5d0(t^cy-2_25rrl35a7@!scna^1#"
 run_django_db_migrations: yes
 run_django_collectstatic: yes

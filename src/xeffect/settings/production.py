@@ -7,7 +7,7 @@ DEBUG = False
 TEMPLATE_DEBUG = False
 
 # Must mention ALLOWED_HOSTS in production!
-# ALLOWED_HOSTS = ["xeffect.com"]
+ALLOWED_HOSTS = ["*"]
 
 # Cache the templates in memory for speed-up
 loaders = [
